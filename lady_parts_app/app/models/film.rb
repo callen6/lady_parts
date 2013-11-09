@@ -34,14 +34,14 @@ class Film < ActiveRecord::Base
 #   end
 
   def self.get_totmato_movie_by_imdb_id(imdb_id)
-    get('', query: {title: imdb_id, output: 'json'})
+    get('api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=' + 'API_KEY' + 'q=' + imdb_id + '&page_limit=1&page=1', query: {title: imdb_id, output: 'json'})
+  end
+# we're going to have to uri encode our queries, for example 
+# Make sure to URI encode your queries! http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=[your_api_key]&q=Toy+Story+3&page_limit=1
+  def self.get_totmato_movie_by_title(title)
+     get('api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=' + 'API_KEY' + 'q=' + title + '&page_limit=1&page=1', query: {title: title, output: 'json'})
   end
 
-  def self.get_totmato_movie_by_title
-     get('', query: {title: title, output: 'json'})
-  end
-
-  {"link_template": "http://api.rottentomatoes.com/api/public/v1.0/movies.json?q={search-term}&page_limit={results-per-page}&page={page-number}"}
 
 
 end
