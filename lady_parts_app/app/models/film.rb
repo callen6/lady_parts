@@ -34,7 +34,7 @@ class Film < ActiveRecord::Base
 #   end
 
   def self.get_tomato_movie_by_imdb_id(imdb_id)
-    get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + 'API_KEY' + '&type=imdb&id=' + imdb_id, query: {imdb_id: imdb_id, output: 'json'})
+    get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id, query: {imdb_id: imdb_id, output: 'json'})
   end
 
 
