@@ -1,6 +1,6 @@
 class Film < ActiveRecord::Base
   include HTTParty
-  format: json
+  format :json
 
   def self.get_all_movie_ids
     get('http://bechdeltest.com/api/v1/getAllMovieIds')
