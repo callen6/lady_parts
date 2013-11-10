@@ -4,33 +4,52 @@ class Film < ActiveRecord::Base
   format :json
 
 
-# first, look in the db to see if the movie already exists
 
-#   def self.first_or_create(imdb_id) # this should be used only by us in the beginning
-#     where(imdb_id).first || get_movie_by_imdb_id
-#     # if self(imdb_id).exists?
-#         # get_totmato_movie_by_imdb_id
-#     # else
-#         # get_movie_by_imdb_id(imdb_id)
-#         # get get_totmato_movie_by_imdb_id(imdb_id)
-#     #  end
-#   end
+def self.create_bechdel_movies
+  movies = Film.get_all_movie_ids
+  movies.each do |movie|
+    film = Film.where(imdb_id: movie["imdbid"]).first || Film.create(imdb_id: movie["imdbid"], bechdel_id: movie["id"] )
+  end
+end
 
+def self.add_tomatoes_movies
+  movies = Film.all
+  movies.each do |movie|
+    if get_tomato_movie_by_imdb_id(movie.imdb_id)
+      
+      tomato_movie = movie.get_tomato_movie_by_imdb_id(movie.imdb_id)
+      
+      movie.update(movie.imdb_id, 
+          movie.title = tomato_movie["title"], 
+          movie.director = tomato_movie["abridged_directors"][0]["name"], 
+          movie.tomatoes_id = tomato_movie["id"])
+    else
+      "you got to line 25"
+    end
+  end
+end
 
-
-
+# def self.add_bechdel_ratings
+#   movies = Film.all
+#   movies.each do |movie|
+#     bechdel_rating = movie.get_movie_by_imdb_id(movie.imdb_id)
+# end
  # Bechdel Test API methods using HTTParty
-
 
 # then, if it doesn't, we can get all the movie id's
 # this will only be used the first time, and then again weekly?
 
   def self.get_all_movie_ids
-    get('http://bechdeltest.com/api/v1/getAllMovieIds')
+    all_bechdel_films = get('http://bechdeltest.com/api/v1/getAllMovieIds')
   end
 
   def self.get_movie_by_imdb_id(imdb_id)
+
     get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {title: imdb_id})
+
+    bechdel_movie = get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {title: imdb_id, output: 'json'})
+    bechdel_movie.save
+
   end
 
 # if the search is coming from user interaction, call api once
@@ -47,9 +66,12 @@ class Film < ActiveRecord::Base
 
 
   def self.get_tomato_movie_by_imdb_id(imdb_id)
-    get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id, query: {imdb_id: imdb_id, output: 'json'})
+    tomato_movie_json = get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id, query: {imdb_id: imdb_id, output: 'json'})
+    tomato_film_by_imdb_id = JSON.parse(tomato_movie_json)
+
   end
 
+# this won't return directors
   def self.get_tomato_movie_by_title(title)
     #uri encoding in ruby http://www.ruby-doc.org/stdlib-2.0.0/libdoc/uri/rdoc/URI/Escape.html
     enc_title = URI.escape(title)
