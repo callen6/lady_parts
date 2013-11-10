@@ -1,6 +1,6 @@
 class Film < ActiveRecord::Base
   include HTTParty
-  default_params :output => 'json'
+  default_params output: 'json'
   format :json
 
 
