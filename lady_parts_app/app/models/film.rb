@@ -1,7 +1,10 @@
 class Film < ActiveRecord::Base
   include HTTParty
+  default_params :output => 'json'
   format :json
-# ### first, look in the db to see if the movie already exists
+
+
+# first, look in the db to see if the movie already exists
 
 #   def self.first_or_create(imdb_id) # this should be used only by us in the beginning
 #     where(imdb_id).first || get_movie_by_imdb_id
@@ -13,12 +16,20 @@ class Film < ActiveRecord::Base
 #     #  end
 #   end
 
+
+
+
+ # Bechdel Test API methods using HTTParty
+
+
+
   def self.from_input(title) # this should be used when we allow user input
     where(title).first || get_movies_by_title
   end
 
 # then, if it doesn't, we can get all the movie id's
 # this will only be used the first time, and then again weekly?
+
   def self.get_all_movie_ids
     get('http://bechdeltest.com/api/v1/getAllMovieIds')
   end
@@ -29,10 +40,16 @@ class Film < ActiveRecord::Base
 
 # if the search is coming from user interaction, call api once
 # for both bechdel test and rotten tomatoes 
-  
+
   def self.get_movies_by_title(title) # returns any movie that matches, can be more than one
     get('http://bechdeltest.com/api/v1/getMoviesByTitle', query: {title: title, output: 'json'})
   end
+  
+
+
+  # Rotten Tomatoes API methods using HTTParty
+
+
 
   def self.get_tomato_movie_by_imdb_id(imdb_id)
     get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id, query: {imdb_id: imdb_id, output: 'json'})
