@@ -4,24 +4,21 @@ class Film < ActiveRecord::Base
   format :json
 
 
-# first, look in the db to see if the movie already exists
 
-# new_film = Film.find_or_initialize_by(imdb_id)
-# new_film.update_attributes({
-#   title: "movies"["title"]
-#   director: "alternate_ids"["imdb"]
-#   tomatoes_id: "movies"["id"]
-#   })
-
-
-def self.create_tomato_movie_by_imdb_id(imdb_id)
-  self.update(imdb_id, {
-    film.title: film["title"]
-    film.director: film["abridged_directors"][0]["name"]
-    film.tomatoes_id: film["id"]
-    })
+def self.create_bechdel_movies
+  movies = Film.get_all_movie_ids
+  movies.each do |movie|
+    film = Film.where(imdb_id: movie["imdbid"]).first || Film.create(imdb_id: movie["imdbid"], bechdel_id: movie["id"] )
+  end
 end
 
+# def self.add_tomatoes_movies
+#   movies = Film.all
+#   movies.each do |movie|
+#     tomato_movie = movie.get_tomato_movie_by_imdb_id(movie.imdb_id)
+#     movie.update(movie.imdb_id, {movie.title = tomato_movie["title"], movie.director = tomato_movie["abridged_directors"][0]["name"], movie.tomatoes_id = tomato_movie["id"]})
+#   end
+# end
  # Bechdel Test API methods using HTTParty
 
 # then, if it doesn't, we can get all the movie id's
@@ -29,10 +26,6 @@ end
 
   def self.get_all_movie_ids
     all_bechdel_films = get('http://bechdeltest.com/api/v1/getAllMovieIds')
-  # this gets our information
-    all_bechdel_films.each do |film|
-      film.imdb_id: save
-      film.bechdel_id: save
   end
 
   def self.get_movie_by_imdb_id(imdb_id)
