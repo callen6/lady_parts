@@ -43,7 +43,7 @@ end
   end
 
   def get_movie_by_imdb_id(imdb_id)
-    get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {title: imdb_id})
+    Film.get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {title: imdb_id})
   end
 
 # if the search is coming from user interaction, call api once
@@ -51,7 +51,7 @@ end
 
   def get_movies_by_title(title) # returns any movie that matches, can be more than one
 
-    get('http://bechdeltest.com/api/v1/getMoviesByTitle', query: {title: title})
+    Film.get('http://bechdeltest.com/api/v1/getMoviesByTitle', query: {title: title})
 
   end
   
