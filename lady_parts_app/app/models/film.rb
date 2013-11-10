@@ -63,7 +63,6 @@ end
 
   def self.get_tomato_movie_by_imdb_id(imdb_id)
     tomato_movie_json = get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id, query: {imdb_id: imdb_id, output: 'json'})
-    tomato_film_by_imdb_id = JSON.parse(tomato_movie_json)
 
   end
 
