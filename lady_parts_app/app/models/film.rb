@@ -3,8 +3,6 @@ class Film < ActiveRecord::Base
   default_params output: 'json'
   format :json
 
-
-
 def self.create_bechdel_movies
   movies = Film.get_all_movie_ids
   movies.each do |movie|
@@ -14,6 +12,7 @@ end
 
 def add_tomatoes_movies
   movies = Film.all
+  # binding.pry
   movies.each do |movie|
     if movie.get_tomato_movie_by_imdb_id('movie.imdb_id')
       
@@ -24,7 +23,7 @@ def add_tomatoes_movies
           movie.director = tomato_movie["abridged_directors"][0]["name"], 
           movie.tomatoes_id = tomato_movie["id"])
     else
-      "you got to line 25"
+      puts "you got to line 25"
     end
   end
 end
@@ -44,15 +43,26 @@ end
   end
 
   def get_movie_by_imdb_id(imdb_id)
+<<<<<<< HEAD
+=======
+
+    get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {title: imdb_id})
+
+>>>>>>> enspencer-master
     bechdel_movie = get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {title: imdb_id, output: 'json'})
     bechdel_movie.save
+
   end
 
 # if the search is coming from user interaction, call api once
 # for both bechdel test and rotten tomatoes 
 
   def get_movies_by_title(title) # returns any movie that matches, can be more than one
+<<<<<<< HEAD
     get('http://bechdeltest.com/api/v1/getMoviesByTitle', query: {title: title, output: 'json'})
+=======
+    get('http://bechdeltest.com/api/v1/getMoviesByTitle', query: {title: title})
+>>>>>>> enspencer-master
   end
   
 
@@ -60,10 +70,16 @@ end
   # Rotten Tomatoes API methods using HTTParty
 
 
+<<<<<<< HEAD
   # if we take away self, we have to put in Film
   def get_tomato_movie_by_imdb_id(imdb_id)
    Film.get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id.to_s, query: {imdb_id: imdb_id, output: 'json'})
 
+=======
+
+  def get_tomato_movie_by_imdb_id(imdb_id)
+    Film.get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id.to_s, query: {imdb_id: imdb_id, output: 'json'})
+>>>>>>> enspencer-master
   end
 
 # this won't return directors
