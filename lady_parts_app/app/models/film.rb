@@ -6,26 +6,31 @@ class Film < ActiveRecord::Base
 
 # first, look in the db to see if the movie already exists
 
-#   def self.first_or_create(imdb_id) # this should be used only by us in the beginning
-#     where(imdb_id).first || get_movie_by_imdb_id
-#     # if self(imdb_id).exists?
-#         # get_totmato_movie_by_imdb_id
-#     # else
-#         # get_movie_by_imdb_id(imdb_id)
-#         # get get_totmato_movie_by_imdb_id(imdb_id)
-#     #  end
-#   end
+new_film = Film.find_or_initialize_by(imdb_id)
+new_film.update_attributes({
+  title: "movies"["title"]
+  director: "alternate_ids"["imdb"]
+  tomatoes_id: "movies"["id"]
+  })
 
 
+def self.create_tomato_movie_by_imdb_id(imdb_id)
+  self.update(imdb_id, {
+    title: "movies"["title"]
+    director: "alternate_ids"["imdb"]
+    tomatoes_id: "movies"["id"]
+    })
+end
 
+def self.create_tomato_movie_by_title(title)
+  self.update(title, {
+    title: "movies"["title"]
+    director: "alternate_ids"["imdb"]
+    tomatoes_id: "movies"["id"]
+    })
+end
 
  # Bechdel Test API methods using HTTParty
-
-
-
-  def self.from_input(title) # this should be used when we allow user input
-    where(title).first || get_movies_by_title
-  end
 
 # then, if it doesn't, we can get all the movie id's
 # this will only be used the first time, and then again weekly?
@@ -35,7 +40,8 @@ class Film < ActiveRecord::Base
   end
 
   def self.get_movie_by_imdb_id(imdb_id)
-    get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {title: imdb_id, output: 'json'})
+    bechdel_movie = get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {title: imdb_id, output: 'json'})
+    bechdel_movie.save
   end
 
 # if the search is coming from user interaction, call api once
