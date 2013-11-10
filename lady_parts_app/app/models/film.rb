@@ -12,7 +12,7 @@ def self.create_bechdel_movies
   end
 end
 
-def self.add_tomatoes_movies
+def add_tomatoes_movies
   movies = Film.all
   movies.each do |movie|
     if get_tomato_movie_by_imdb_id(movie.imdb_id)
@@ -43,7 +43,7 @@ end
     all_bechdel_films = get('http://bechdeltest.com/api/v1/getAllMovieIds')
   end
 
-  def self.get_movie_by_imdb_id(imdb_id)
+  def get_movie_by_imdb_id(imdb_id)
     bechdel_movie = get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {title: imdb_id, output: 'json'})
     bechdel_movie.save
   end
@@ -51,7 +51,7 @@ end
 # if the search is coming from user interaction, call api once
 # for both bechdel test and rotten tomatoes 
 
-  def self.get_movies_by_title(title) # returns any movie that matches, can be more than one
+  def get_movies_by_title(title) # returns any movie that matches, can be more than one
     get('http://bechdeltest.com/api/v1/getMoviesByTitle', query: {title: title, output: 'json'})
   end
   
@@ -61,13 +61,13 @@ end
 
 
 
-  def self.get_tomato_movie_by_imdb_id(imdb_id)
+  def get_tomato_movie_by_imdb_id(imdb_id)
     tomato_movie_json = get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id, query: {imdb_id: imdb_id, output: 'json'})
 
   end
 
 # this won't return directors
-  def self.get_tomato_movie_by_title(title)
+  def get_tomato_movie_by_title(title)
     #uri encoding in ruby http://www.ruby-doc.org/stdlib-2.0.0/libdoc/uri/rdoc/URI/Escape.html
     enc_title = URI.escape(title)
     get('http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=' + ENV['API_KEY'] + '&q=' + enc_title + '&page_limit=1', query: {title: title, output: 'json'})
