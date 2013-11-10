@@ -43,50 +43,34 @@ end
   end
 
   def get_movie_by_imdb_id(imdb_id)
-<<<<<<< HEAD
-=======
-
     get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {title: imdb_id})
-
->>>>>>> enspencer-master
-    bechdel_movie = get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {title: imdb_id, output: 'json'})
-    bechdel_movie.save
-
   end
 
 # if the search is coming from user interaction, call api once
 # for both bechdel test and rotten tomatoes 
 
   def get_movies_by_title(title) # returns any movie that matches, can be more than one
-<<<<<<< HEAD
-    get('http://bechdeltest.com/api/v1/getMoviesByTitle', query: {title: title, output: 'json'})
-=======
+
     get('http://bechdeltest.com/api/v1/getMoviesByTitle', query: {title: title})
->>>>>>> enspencer-master
+
   end
   
 
 
   # Rotten Tomatoes API methods using HTTParty
 
-
-<<<<<<< HEAD
   # if we take away self, we have to put in Film
   def get_tomato_movie_by_imdb_id(imdb_id)
-   Film.get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id.to_s, query: {imdb_id: imdb_id, output: 'json'})
+   Film.get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id.to_s, query: {imdb_id: imdb_id})
 
-=======
 
-  def get_tomato_movie_by_imdb_id(imdb_id)
-    Film.get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id.to_s, query: {imdb_id: imdb_id, output: 'json'})
->>>>>>> enspencer-master
   end
 
 # this won't return directors
   def get_tomato_movie_by_title(title)
     #uri encoding in ruby http://www.ruby-doc.org/stdlib-2.0.0/libdoc/uri/rdoc/URI/Escape.html
     enc_title = URI.escape(title)
-    Film.get('http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=' + ENV['API_KEY'] + '&q=' + enc_title + '&page_limit=1', query: {title: title, output: 'json'})
+    Film.get('http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=' + ENV['API_KEY'] + '&q=' + enc_title + '&page_limit=1', query: {title: title})
   end
 
 
