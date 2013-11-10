@@ -12,12 +12,27 @@ def self.create_bechdel_movies
   end
 end
 
-# def self.add_tomatoes_movies
+def self.add_tomatoes_movies
+  movies = Film.all
+  movies.each do |movie|
+    if get_tomato_movie_by_imdb_id(movie.imdb_id)
+      
+      tomato_movie = movie.get_tomato_movie_by_imdb_id(movie.imdb_id)
+      
+      movie.update(movie.imdb_id, 
+          movie.title = tomato_movie["title"], 
+          movie.director = tomato_movie["abridged_directors"][0]["name"], 
+          movie.tomatoes_id = tomato_movie["id"])
+    else
+      "you got to line 25"
+    end
+  end
+end
+
+# def self.add_bechdel_ratings
 #   movies = Film.all
 #   movies.each do |movie|
-#     tomato_movie = movie.get_tomato_movie_by_imdb_id(movie.imdb_id)
-#     movie.update(movie.imdb_id, {movie.title = tomato_movie["title"], movie.director = tomato_movie["abridged_directors"][0]["name"], movie.tomatoes_id = tomato_movie["id"]})
-#   end
+#     bechdel_rating = movie.get_movie_by_imdb_id(movie.imdb_id)
 # end
  # Bechdel Test API methods using HTTParty
 
