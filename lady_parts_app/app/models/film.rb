@@ -22,11 +22,6 @@ class Film < ActiveRecord::Base
  # Bechdel Test API methods using HTTParty
 
 
-
-  def self.from_input(title) # this should be used when we allow user input
-    where(title).first || get_movies_by_title
-  end
-
 # then, if it doesn't, we can get all the movie id's
 # this will only be used the first time, and then again weekly?
 
@@ -35,14 +30,14 @@ class Film < ActiveRecord::Base
   end
 
   def self.get_movie_by_imdb_id(imdb_id)
-    get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {title: imdb_id, output: 'json'})
+    get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {title: imdb_id})
   end
 
 # if the search is coming from user interaction, call api once
 # for both bechdel test and rotten tomatoes 
 
   def self.get_movies_by_title(title) # returns any movie that matches, can be more than one
-    get('http://bechdeltest.com/api/v1/getMoviesByTitle', query: {title: title, output: 'json'})
+    get('http://bechdeltest.com/api/v1/getMoviesByTitle', query: {title: title})
   end
   
 
