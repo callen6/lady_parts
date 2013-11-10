@@ -15,9 +15,9 @@ end
 def add_tomatoes_movies
   movies = Film.all
   movies.each do |movie|
-    if get_tomato_movie_by_imdb_id(movie.imdb_id)
+    if movie.get_tomato_movie_by_imdb_id('movie.imdb_id')
       
-      tomato_movie = movie.get_tomato_movie_by_imdb_id(movie.imdb_id)
+      tomato_movie = movie.get_tomato_movie_by_imdb_id('movie.imdb_id')
       
       movie.update(movie.imdb_id, 
           movie.title = tomato_movie["title"], 
@@ -38,7 +38,7 @@ end
 
 # then, if it doesn't, we can get all the movie id's
 # this will only be used the first time, and then again weekly?
-
+  # class method
   def self.get_all_movie_ids
     all_bechdel_films = get('http://bechdeltest.com/api/v1/getAllMovieIds')
   end
@@ -60,9 +60,9 @@ end
   # Rotten Tomatoes API methods using HTTParty
 
 
-
+  # if we take away self, we have to put in Film
   def get_tomato_movie_by_imdb_id(imdb_id)
-    tomato_movie_json = get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id, query: {imdb_id: imdb_id, output: 'json'})
+   Film.get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id.to_s, query: {imdb_id: imdb_id, output: 'json'})
 
   end
 
@@ -70,7 +70,7 @@ end
   def get_tomato_movie_by_title(title)
     #uri encoding in ruby http://www.ruby-doc.org/stdlib-2.0.0/libdoc/uri/rdoc/URI/Escape.html
     enc_title = URI.escape(title)
-    get('http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=' + ENV['API_KEY'] + '&q=' + enc_title + '&page_limit=1', query: {title: title, output: 'json'})
+    Film.get('http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=' + ENV['API_KEY'] + '&q=' + enc_title + '&page_limit=1', query: {title: title, output: 'json'})
   end
 
 
