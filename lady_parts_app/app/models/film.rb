@@ -13,6 +13,16 @@ def self.create_bechdel_movies
   end
 end
 
+def self.add_bechdel_ratings
+  movies = Film.all
+  movies.each do |movie|
+    imdb = movie.imdb_id
+    bechdel_movie = movie.get_movie_by_imdb_id(imdb)
+    movie.bechdel_rating = bechdel_movie['rating']
+    movie.save
+  end
+end
+
 def self.correct_imdb_ids
   movies = Film.all
   movies.each do |movie|
@@ -33,23 +43,22 @@ end
 
 def self.add_tomatoes_movies
   movies = Film.all
-  # binding.pry
   movies.each do |movie|
-      tomato_movie = movie.get_tomato_movie_by_imdb_id(movie.imdb_id.to_s)
-          movie.title = tomato_movie["title"] || "No record in Rotten Tomatoes" 
+    tomato_movie = movie.get_tomato_movie_by_imdb_id(movie.imdb_id.to_s)
+        movie.title = tomato_movie["title"] || "No record in Rotten Tomatoes" 
           # movie.director = tomato_movie["abridged_directors"][0]["name"] || "No record in Rotten Tomatoes" 
           movie.tomatoes_id = tomato_movie["id"] || "0"
-  end
-end
+          # movie.year = tomato_movie["year"]
+          # movie.critics_score = tomato_movie["ratings"]["critics_score"]
+          # movie.audience_score = tomato_movie["ratings"]["audience_score"]
+          # movie.poster = tomato_movie["posters"]["detailed"]
+          # movie.studio = tomato_movie["studio"]
+          # movie.cast = tomato_movie["abridged_cast"].map{|u| u["name"]}
+          movie.save
+        end
+      end
 
-def self.add_bechdel_ratings
-  movies = Film.all
-  movies.each do |movie|
-    imdb = movie.imdb_id
-    bechdel_movie = movie.get_movie_by_imdb_id(imdb)
-    movie.bechdel_rating = bechdel_movie['rating']
-  end
-end
+
  # Bechdel Test API methods using HTTParty
 
 # then, if it doesn't, we can get all the movie id's
@@ -81,24 +90,24 @@ end
  end
 
 
-  def get_tomato_movie_by_imdb_id(imdb_id)
-    Film.get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id.to_s, query: {imdb_id: imdb_id})
-  end
+ def get_tomato_movie_by_imdb_id(imdb_id)
+  Film.get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id, query: {imdb_id: imdb_id})
+end
 
 # this won't return directors
-  def get_tomato_movie_by_title(title)
+def get_tomato_movie_by_title(title)
     #uri encoding in ruby http://www.ruby-doc.org/stdlib-2.0.0/libdoc/uri/rdoc/URI/Escape.html
     enc_title = URI.escape(title)
     Film.get('http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=' + ENV['API_KEY'] + '&q=' + enc_title + '&page_limit=1', query: {title: title})
   end
 
   private
-    def default_values
-      self.title ||= ""
-      self.director ||= ""
-      self.tomatoes_id ||= 0
-      self.bechdel_rating ||= 0
-    end
+    # def default_values
+    #   self.title ||= ""
+    #   self.director ||= ""
+    #   self.tomatoes_id ||= 0
+    #   self.bechdel_rating ||= 0
+    # end
 
 
-end
+  end
