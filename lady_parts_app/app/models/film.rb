@@ -36,23 +36,20 @@ def self.add_tomatoes_movies
   # binding.pry
   movies.each do |movie|
       tomato_movie = movie.get_tomato_movie_by_imdb_id(movie.imdb_id.to_s)
-      if tomato_movie["error"] == "Could not find a movie with the specified id" 
-          movie.title = "No record in Rotten Tomatoes" 
-          movie.director = "No record in Rotten Tomatoes"  
-          movie.tomatoes_id = "0"
-      else 
           movie.title = tomato_movie["title"] || "No record in Rotten Tomatoes" 
-          movie.director = tomato_movie["abridged_directors"][0]["name"] || "No record in Rotten Tomatoes" 
+          # movie.director = tomato_movie["abridged_directors"][0]["name"] || "No record in Rotten Tomatoes" 
           movie.tomatoes_id = tomato_movie["id"] || "0"
-    end
   end
 end
 
-# def self.add_bechdel_ratings
-#   movies = Film.all
-#   movies.each do |movie|
-#     bechdel_rating = movie.get_movie_by_imdb_id(movie.imdb_id)
-# end
+def self.add_bechdel_ratings
+  movies = Film.all
+  movies.each do |movie|
+    imdb = movie.imdb_id
+    bechdel_movie = movie.get_movie_by_imdb_id(imdb)
+    movie.bechdel_rating = bechdel_movie['rating']
+  end
+end
  # Bechdel Test API methods using HTTParty
 
 # then, if it doesn't, we can get all the movie id's
@@ -64,7 +61,7 @@ end
 
 
   def get_movie_by_imdb_id(imdb_id)
-    Film.get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {title: imdb_id})
+    Film.get('http://bechdeltest.com/api/v1/getMovieByImdbId', query: {imdbid: imdb_id})
   end
 
 # if the search is coming from user interaction, call api once
@@ -75,14 +72,13 @@ end
     Film.get('http://bechdeltest.com/api/v1/getMoviesByTitle', query: {title: title})
 
   end
-  
-
 
   # Rotten Tomatoes API methods using HTTParty
 
   # if we take away self, we have to put in Film
   def get_tomato_movie_by_imdb_id(imdb_id)
    Film.get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id, query: {imdb_id: imdb_id})
+ end
 
 
   def get_tomato_movie_by_imdb_id(imdb_id)
