@@ -10,7 +10,7 @@ def self.create_bechdel_movies
   end
 end
 
-def add_tomatoes_movies
+def self.add_tomatoes_movies
   movies = Film.all
   # binding.pry
   movies.each do |movie|
@@ -61,7 +61,7 @@ end
 
   # if we take away self, we have to put in Film
   def get_tomato_movie_by_imdb_id(imdb_id)
-   Film.get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id.to_s, query: {imdb_id: imdb_id})
+   Film.get('http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=' + ENV['API_KEY'] + '&type=imdb&id=' + imdb_id, query: {imdb_id: imdb_id})
 
 
   end
