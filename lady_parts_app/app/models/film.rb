@@ -10,6 +10,24 @@ def self.create_bechdel_movies
   end
 end
 
+def self.correct_imdb_ids
+  movies = Film.all
+  movies.each do |movie|
+    if movie.imdb_id.length == 3
+      # add 4 zeroes at the front
+      movie.imdb_id = "0000" + movie.imdb_id
+    elsif movie.imdb_id.length == 4
+      movie.imdb_id = "000" + movie.imdb_id
+    elsif movie.imdb_id.length == 5
+      movie.imdb_id = "00" + movie.imdb_id
+    elsif movie.imdb_id.length == 6
+      movie.imdb_id = "0" + movie.imdb_id
+    else
+      movie.imdb_id = movie.imdb_id
+    end
+  end
+end
+
 def self.add_tomatoes_movies
   movies = Film.all
   # binding.pry
