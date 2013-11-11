@@ -14,16 +14,15 @@ def self.add_tomatoes_movies
   movies = Film.all
   # binding.pry
   movies.each do |movie|
-    if movie.get_tomato_movie_by_imdb_id('movie.imdb_id')
-      
       tomato_movie = movie.get_tomato_movie_by_imdb_id('movie.imdb_id')
-      
-      movie.update(movie.imdb_id, 
-          movie.title = tomato_movie["title"], 
-          movie.director = tomato_movie["abridged_directors"][0]["name"], 
-          movie.tomatoes_id = tomato_movie["id"])
-    else
-      puts "you got to line 25"
+      if tomato_movie["error"] == "Could not find a movie with the specified id" 
+          movie.title = "No record in Rotten Tomatoes" 
+          movie.director = "No record in Rotten Tomatoes"  
+          movie.tomatoes_id = "No record in Rotten Tomatoes"
+      else 
+          movie.title = tomato_movie["title"]
+          movie.director = tomato_movie["abridged_directors"][0]["name"]
+          movie.tomatoes_id = tomato_movie["id"]
     end
   end
 end
