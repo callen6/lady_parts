@@ -41,9 +41,9 @@ class Film < ActiveRecord::Base
   def self.add_tomatoes_movies
     movies = Film.all
     movies.each do |movie|
-      tomato_movie = movie.get_tomato_movie_by_imdb_id(movie.imdb_id.to_s)
-      movie.title = tomato_movie["title"] || "No record in Rotten Tomatoes" 
-      movie.tomatoes_id = tomato_movie["id"] || "0"
+      tomato_movie = movie.get_tomato_movie_by_imdb_id(movie.imdb_id)
+      # movie.title = tomato_movie["title"] || "No record in Rotten Tomatoes" 
+      # movie.tomatoes_id = tomato_movie["id"] || "0"
       # movie.director = tomato_movie["abridged_directors"][0]["name"] || "No record in Rotten Tomatoes"
       movie.year = tomato_movie["year"] || 0 # integer
       movie.critics_score = tomato_movie["ratings"]["critics_score"] || 0 # integer
