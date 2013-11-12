@@ -1,8 +1,7 @@
 class FilmsController < ApplicationController
+      respond_to :html, :xml, :json
 
   def index
-    @films = Film.all
-    @films.to_json
+    respond_with Film.all
   end
-
 end

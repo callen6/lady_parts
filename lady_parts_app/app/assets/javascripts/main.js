@@ -8,9 +8,10 @@ var Ladyparts = {
       $.ajax({
         url: '/',
         type: 'GET',
+        cache: false,
         dataType: 'json',
-        success: function(data) {
-          console.log(data);
+        success: function(films) {
+          console.log(films);
       }
   });
   }
