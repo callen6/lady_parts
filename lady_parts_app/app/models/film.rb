@@ -38,20 +38,24 @@ class Film < ActiveRecord::Base
     end
   end
 
-  def self.add_tomatoes_movies
-    movies = Film.all
+  def self.add_tomatoes_movies()
+    movies = Film.all #find((2200...3000).to_a) #all
     movies.each do |movie|
-      tomato_movie = movie.get_tomato_movie_by_imdb_id(movie.imdb_id)
-      # movie.title = tomato_movie["title"] || "No record in Rotten Tomatoes" 
-      # movie.tomatoes_id = tomato_movie["id"] || "0"
-      # movie.director = tomato_movie["abridged_directors"][0]["name"] || "No record in Rotten Tomatoes"
-      movie.year = tomato_movie["year"] || 0 # integer
-      movie.critics_score = tomato_movie["ratings"]["critics_score"] || 0 # integer
-      movie.audience_score = tomato_movie["ratings"]["audience_score"] || 0 # integer
-      movie.poster = tomato_movie["posters"]["detailed"] || "No Record in Rotten Tomatoes"
-      movie.studio = tomato_movie["studio"] || "No Record in Rotten Tomatoes"
-      movie.cast = tomato_movie["abridged_cast"].map{|u| [u["name"], u["id"]] } || "No Record in Rotten Tomatoes" # array of names
-      movie.save
+      begin
+        tomato_movie = movie.get_tomato_movie_by_imdb_id(movie.imdb_id)
+          movie.title = tomato_movie["title"] || "No record in Rotten Tomatoes" 
+          movie.tomatoes_id = tomato_movie["id"] || "0"
+          movie.director = tomato_movie["abridged_directors"][0]["name"] || "No record in Rotten Tomatoes"
+          movie.year = tomato_movie["year"] || 0 # integer
+          movie.critics_score = tomato_movie["ratings"]["critics_score"] || 0 # integer
+          movie.audience_score = tomato_movie["ratings"]["audience_score"] || 0 # integer
+          movie.poster = tomato_movie["posters"]["detailed"] || "No Record in Rotten Tomatoes"
+          movie.studio = tomato_movie["studio"] || "No Record in Rotten Tomatoes"
+          movie.cast = tomato_movie["abridged_cast"].map{|u| [u["name"], u["id"]] } || "No Record in Rotten Tomatoes" # array of names
+        movie.save
+      rescue Exception => e
+        puts "Got an Exception of #{e.message}"
+      end
     end
   end
 
