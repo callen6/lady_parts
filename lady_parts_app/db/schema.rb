@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111021551) do
+ActiveRecord::Schema.define(version: 20131111231032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 20131111021551) do
     t.string  "imdb_id"
     t.integer "tomatoes_id"
     t.integer "bechdel_id"
+    t.integer "year"
+    t.integer "critics_score"
+    t.integer "audience_score"
+    t.text    "poster"
+    t.string  "studio"
+    t.string  "cast",           default: [], array: true
   end
 
 end
