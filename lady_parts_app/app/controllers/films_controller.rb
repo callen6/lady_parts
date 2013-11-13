@@ -5,7 +5,4 @@ class FilmsController < ApplicationController
     respond_with Film.where(critics_score: 1..100)
   end
 
-  def passing
-  end
-
 end
