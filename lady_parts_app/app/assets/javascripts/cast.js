@@ -8,10 +8,10 @@ var Cast = {
 			url: '/films/cast', 
 			type: 'GET', 
 			dataType: 'json',
-			success: function(actors) {
-				console.log(actors);
+			success: function(films) {
+				console.log(films);
 
 			}
-		})
+		});
 	}
 }
