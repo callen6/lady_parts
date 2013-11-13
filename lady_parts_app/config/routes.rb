@@ -1,5 +1,5 @@
 LadyPartsApp::Application.routes.draw do
-
+  get '/films/network' => 'films#network'
   root 'films#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -9,7 +9,7 @@ var Ladyparts = {
 
   getFilms: function() {
       $.ajax({
-        url: '/',
+        url: '/films/network',
         type: 'GET',
         dataType: 'json',
         success: function(films) {
