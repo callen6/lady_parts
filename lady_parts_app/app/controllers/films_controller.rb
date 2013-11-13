@@ -5,8 +5,8 @@ class FilmsController < ApplicationController
     respond_with Film.where(critics_score: 1..100)
   end
 
-  def network
-
+  def cast
+  	respond_with Film.where(bechdel_rating: 3)
   end
 
 end

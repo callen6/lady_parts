@@ -1,11 +1,17 @@
 $(function () {
-	Network.getActors();
+	Cast.getActors();
 })
 
-var Network = {
+var Cast = {
 	getActors: function() {
 		$.ajax( {
-			url: '/films/network'
+			url: '/films/cast', 
+			type: 'GET', 
+			dataType: 'json',
+			success: function(actors) {
+				console.log(actors);
+
+			}
 		})
 	}
 }
