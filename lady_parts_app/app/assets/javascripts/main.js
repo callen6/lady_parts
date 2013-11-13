@@ -1,5 +1,8 @@
 $(function() {
   Ladyparts.getFilms();
+  $('#hideshow').on('click', function(e){
+    $('#vis').toggle('show');
+  });
 });
 
 var Ladyparts = {
