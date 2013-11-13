@@ -6,6 +6,6 @@ $(function() {
   Ladyparts.change(); //trigger json on load
 
   $('#hideshow').on('click', function(e){
-    $('#vis1').toggle('show');
+    $('#barchart1').toggle('show');
   });
 });

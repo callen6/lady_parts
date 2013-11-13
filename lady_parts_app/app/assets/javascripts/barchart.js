@@ -25,6 +25,12 @@ var Ladyparts = {
           .attr('width', w)
           .attr("id", "barchart")
           .style('border','2px solid black'),
+        // tooltip = d3.select("#vis1")
+        //   .append("div")
+        //   .style("position", "absolute")
+        //   .style("z-index", "10")
+        //   .style("visibility", "hidden")
+        //   .text("Film"),
         height = d3.scale
                 .linear()
                 .domain([0, 100])
@@ -52,6 +58,11 @@ var Ladyparts = {
         .attr("fill", function(d, index){
           return color(d.bechdel_rating);
         })
+        // .call(d3.helper.tooltip()
+        //   .attr({class: function(d, i) { return d + ' ' +  i + ' A'; }})
+        //   .style({color: 'blue'})
+        //   .text(function(d, i){ return d.title; })
+        //   )
         .on('mouseenter', function(d,i){
           $('#film-info').html("<h2>Film: " + d.title + "</h2>" + "<p>Critics Score on Rotten Tomatoes: " + Number(d.critics_score)) + "</p>" + "<p>Bechdel Rating: " + d.bechdel_rating + "</p>";
 
@@ -65,6 +76,8 @@ var Ladyparts = {
               return h - height(d.critics_score) - 40;
             })
         })
+        .on('mouseover', function(d,i){
+        })
         .on('mouseleave', function(d,i){
           d3.select(this)
               .transition()
@@ -76,6 +89,15 @@ var Ladyparts = {
               return h - height(d.critics_score);
             })
         })
+
+    $('rect').tipsy({ 
+        gravity: 'w', 
+        html: true, 
+        title: function() {
+          var d = this.__data__;
+          return '<h2>' + d.title + "</h2> " + "<h3>" + d.critics_score + "</h3>"; 
+        }
+      });
 
 // for changing graph based on dropdown
   
