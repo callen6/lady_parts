@@ -64,8 +64,6 @@ var Ladyparts = {
         //   .text(function(d, i){ return d.title; })
         //   )
         .on('mouseenter', function(d,i){
-          $('#film-info').html("<h2>Film: " + d.title + "</h2>" + "<p>Critics Score on Rotten Tomatoes: " + Number(d.critics_score)) + "</p>" + "<p>Bechdel Rating: " + d.bechdel_rating + "</p>";
-
           d3.select(this)
             .transition()
             .duration(50)
