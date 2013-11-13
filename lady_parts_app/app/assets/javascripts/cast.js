@@ -10,7 +10,6 @@ var Cast = {
 			dataType: 'json',
 			success: function(films) {
 				console.log(films);
-
 			}
 		});
 	}
