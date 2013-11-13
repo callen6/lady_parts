@@ -29,11 +29,14 @@ var Cast = {
 					.attr('width', w)
 					.style('border', '2px solid black');
 		
-		var height = d3.scale
+				height = d3.scale
 								.linear
 								.domain([0, 3])
-								.range([0, h]);
-
+								.range([0, h]),
+				color = d3.scale
+                .ordinal()
+                .domain(["1", "2", "3"])
+                .range(["#FF7F00", "#F5F732", "#42A87A"]);
 		svg.selectAll('rect')
 			.data(films)
 			.enter()
@@ -47,7 +50,10 @@ var Cast = {
 			.attr('width', barWidth)
 			.attr('y', function(data, index){
 				return h - height(data.bechdel_rating);
-			});
+			})
+			.attr("fill"), function(d, index){
+				return color(d.bechdel_rating);
+			}
 
 	}
 
