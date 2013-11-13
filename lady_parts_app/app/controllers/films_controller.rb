@@ -6,7 +6,7 @@ class FilmsController < ApplicationController
   end
 
   def cast
-  	respond_with Film.where(bechdel_rating: '3')
+  	respond_with Film.where(bechdel_rating: 1..3)
   end
 
   def barchart
