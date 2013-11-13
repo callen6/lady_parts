@@ -38,7 +38,7 @@ class Film < ActiveRecord::Base
     end
   end
 
-  def self.add_tomatoes_movies()
+  def self.add_tomatoes_movies
     movies = Film.all #find((2200...3000).to_a) #all
     movies.each do |movie|
       begin
