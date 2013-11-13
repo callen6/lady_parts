@@ -13,4 +13,16 @@ var Cast = {
 			}
 		});
 	}
+
+	plotFilms: function(films) {
+		var h = 600, 
+				w = 1200, 
+				dataLength = films.length, 
+				barWidth = w/dataLength, 
+				svg = d3.select('#vis2')
+					.append('svg')
+	}
+
+
+
 }
