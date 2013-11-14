@@ -1,14 +1,13 @@
 <div id="view_selection" class="btn-group btn-toolbar" style='width:100%'>
-  <button type='button' class="btn btn-default btn-block huge-button-text" id='bechdel_about'><h2>The Bechdel Test</h2></button>
   <button type='button' class="btn btn-default btn-block" id='hideshow'><h2>Explore Films By Critics Score</h2></button>
   <button type='button' class="btn btn-default btn-block" id='cast_button'><h2>Explore films by actors</h2></button>
 </div>
 
-<div id='about'>
+<div id='about' class='main-box'>
   <%= render "about" %>
 </div>
 
-<div id="barchart1">
+<div id="barchart1" class='main-box'>
 <span>Choose A Year:</span>
 <select id="json_sources" name="json_sources">
     <%= render "dropdown" %>
@@ -17,4 +16,4 @@
 <div id='donut'></div>
 </div>
 
-<div id='cast_svg'></div>
+<div id='cast_svg' class='main-box'></div>
