@@ -1,8 +1,9 @@
 <h1>Ladyparts</h1>
 
-<div id="view_selection" class="btn-group">
-  <input type='button' id='hideshow' value='Explore Films By Critics Score'>
-  <input type='button' id='cast_button' value='Explore films by actors'>
+<div id="view_selection" class="btn-group-vertical" style='width:100%'>
+  <input type='button' class="btn btn-default btn-block" id='bechdel_about' value='The Bechdel Test'>
+  <input type='button' class="btn btn-default btn-block" id='hideshow' value='Explore Films By Critics Score'>
+  <input type='button' class="btn btn-default btn-block" id='cast_button' value='Explore films by actors'>
 </div>
 
 <div id="barchart1">
@@ -10,9 +11,7 @@
     <%= render "dropdown" %>
 </select>​
 <div id='vis1'></div>
-
-<div id="donut">
-</div>
+<div id='donut'></div>
 </div>
 
 <div id='cast_svg'></div>
