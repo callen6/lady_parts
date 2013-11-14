@@ -10,3 +10,7 @@
 h1 {
   text-align: center;
 }
+
+.arc path {
+  stroke: #fff;
+}
