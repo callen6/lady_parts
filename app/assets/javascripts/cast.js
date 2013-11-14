@@ -20,7 +20,7 @@ var Cast = { // closure, namespace
 
 	plotFilms: function(films) {
 		var h = 600, 
-				w = 30000, 
+				w = 1150, 
 				dataLength = films.length, 
 				barWidth = w/dataLength, 
 				svg = d3.select('#cast_svg')
