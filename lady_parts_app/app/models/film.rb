@@ -2,7 +2,6 @@ class Film < ActiveRecord::Base
   include HTTParty
   default_params output: 'json'
   format :json
-  before_create :default_values
 
   def self.create_bechdel_movies
       movies = Film.get_all_movie_ids
