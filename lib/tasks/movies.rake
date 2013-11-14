@@ -19,4 +19,9 @@ namespace :movies do
   	Film.add_tomatoes_movies
   end
 
+  desc "Returns count of films"
+  task count: :environment do
+    puts Film.count
+  end
+
 end
