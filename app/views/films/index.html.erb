@@ -1,56 +1,17 @@
 <h1>Ladyparts</h1>
-<div id="emma-graphic">
 
-<div id="view_selection" class="btn-group">
-  <input type='button' id='hideshow' value='hide/show'>
-  <input type='button' id='cast_button' value='Explore films by actors'
+<div id="view_selection" class="btn-group-vertical" style='width:100%'>
+  <input type='button' class="btn btn-default btn-block" id='bechdel_about' value='The Bechdel Test'>
+  <input type='button' class="btn btn-default btn-block" id='hideshow' value='Explore Films By Critics Score'>
+  <input type='button' class="btn btn-default btn-block" id='cast_button' value='Explore films by actors'>
 </div>
+
 <div id="barchart1">
 <select id="json_sources" name="json_sources">
-    <option start_year ="1800" end_year="1929">pre-1930</option>
-    <option start_year ="1930" end_year="1939">1930-1939</option>
-    <option start_year ="1940" end_year="1949">1940-1949</option>
-    <option start_year ="1950" end_year="1959">1950-1959</option>
-    <option start_year ="1960" end_year="1964">1960-1964</option>
-    <option start_year ="1965" end_year="1969">1965-1969</option>
-    <option start_year ="1970" end_year="1974">1970-1974</option>
-    <option start_year ="1975" end_year="1979">1975-1979</option>
-    <option start_year ="1980" end_year="1985">1980-1985</option>
-    <option start_year ="1986" end_year="1986">1986</option>
-    <option start_year ="1987" end_year="1987">1987</option>
-    <option start_year ="1988" end_year="1988">1988</option>
-    <option start_year ="1989" end_year="1989">1989</option>
-    <option start_year ="1990" end_year="1990">1990</option>
-    <option start_year ="1991" end_year="1991">1991</option>
-    <option start_year ="1992" end_year="1992">1992</option>
-    <option start_year ="1993" end_year="1993">1993</option>
-    <option start_year ="1994" end_year="1994">1994</option>
-    <option start_year ="1995" end_year="1995">1995</option>
-    <option start_year ="1996" end_year="1996">1996</option>
-    <option start_year ="1997" end_year="1997">1997</option>
-    <option start_year ="1998" end_year="1998">1998</option>
-    <option start_year ="1999" end_year="1999">1999</option>
-    <option start_year ="2002" end_year="2002">2000</option>
-    <option start_year ="2002" end_year="2002">2001</option>
-    <option start_year ="2002" end_year="2002">2002</option>
-    <option start_year ="2003" end_year="2003">2003</option>
-    <option start_year ="2004" end_year="2004">2004</option>
-    <option start_year ="2005" end_year="2005">2005</option>
-    <option start_year ="2006" end_year="2006">2006</option>
-    <option start_year ="2007" end_year="2007">2007</option>
-    <option start_year ="2008" end_year="2008">2008</option>
-    <option start_year ="2009" end_year="2009">2009</option>
-    <option start_year ="2010" end_year="2010">2010</option>
-    <option start_year ="2011" end_year="2011">2011</option>
-    <option start_year ="2012" end_year="2012">2012</option>
-    <option start_year ="2013" end_year="2030" selected>2013</option>
+    <%= render "dropdown" %>
 </select>​
 <div id='vis1'></div>
-
-<div id='film-info'></div>
+<div id='donut'></div>
 </div>
 
-<div id="donut">
-</div>
 <div id='cast_svg'></div>
-</div>
