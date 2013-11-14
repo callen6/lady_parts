@@ -2,7 +2,7 @@ $(function () {
 	Cast.getActors();
 })
 
-var Cast = {
+var Cast = { // closure, namespace
 	getActors: function() {
 		$.ajax( {
 			url: '/films/cast', 
@@ -20,17 +20,17 @@ var Cast = {
 
 	plotFilms: function(films) {
 		var h = 600, 
-				w = 1200, 
+				w = 30000, 
 				dataLength = films.length, 
 				barWidth = w/dataLength, 
 				svg = d3.select('#cast_svg')
 					.append('svg')
 					.attr('height', h)
 					.attr('width', w)
-					.style('border', '2px solid black');
+					.style('border', '2px solid black'),
 		
 				height = d3.scale
-								.linear
+								.linear()
 								.domain([0, 3])
 								.range([0, h]),
 				color = d3.scale
@@ -51,23 +51,21 @@ var Cast = {
 			.attr('y', function(data, index){
 				return h - height(data.bechdel_rating);
 			})
-			.attr("fill"), function(d, index){
+			.attr("fill", function(d, index){
 				return color(d.bechdel_rating);
-			}
+			})
+
+
+			$('rect').tipsy({ 
+				gravity: 'w', 
+				html: true, 
+				title: function() {
+					var d = this.__data__;
+					return '<h2>' + d.title + "</h2> " + "<h3>" + d.cast[0][0] + "</h3>"; 
+				}
+			});
 
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
