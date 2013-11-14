@@ -56,14 +56,14 @@ var Cast = { // closure, namespace
 			})
 
 
-			$('rect').tipsy({ 
-				gravity: 'w', 
-				html: true, 
-				title: function() {
-					var d = this.__data__;
-					return '<h2>' + d.title + "</h2> " + "<h3>" + d.cast[0][0] + "</h3>"; 
-				}
-			});
+	$('rect').tipsy({ 
+		gravity: 'w', 
+		html: true, 
+		title: function() {
+			var d = this.__data__;
+			return "<h2>" + d.title + "</h2> " + "<h3>" + d.cast[0][0] + ", " + d.cast[1][0] + ", " + d.cast[2][0] + ", " + d.cast[3][0] + ", " + d.cast[4][0] + "</h3>"; 
+		}
+	});
 
 	}
 
