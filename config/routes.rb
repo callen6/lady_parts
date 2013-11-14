@@ -1,5 +1,5 @@
 LadyPartsApp::Application.routes.draw do
-
+  get '/films/cast' => 'films#cast'
   root 'films#index'
   get '/films/barchart' => 'films#barchart'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -5,6 +5,10 @@ class FilmsController < ApplicationController
     respond_with Film.all
   end
 
+  def cast
+  	respond_with Film.where(bechdel_rating: 1..3)
+  end
+
   def barchart
     year_range = params[:year_range]
     start_year = year_range["start_year"]
