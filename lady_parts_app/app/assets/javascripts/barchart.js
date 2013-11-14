@@ -38,11 +38,14 @@ var Ladyparts = {
             .attr("height", height)
             .append("g")
             .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-// what to do with this
-    d3.json(year_range, function(error, data) {
 
-  data.forEach(function(d) {
-    d.critics_score = +d.critics_score;
+// what to do with this
+    d3.json('/films/barchart', function(json) {
+      data = json,
+      console.log(data);
+      debugger;
+      data.forEach(function(d) {
+        d.critics_score = +d.critics_score;
   }),
 
     g = svg.selectAll(".arc")
@@ -61,14 +64,7 @@ var Ladyparts = {
       .text(function(d) { return d.data.age; });
 
 });
-  changeDonut: function() {
-      var year_range = {start_year: dropdown.node().options[dropdown.node().selectedIndex].attributes.start_year.value, 
-          end_year: dropdown.node().options[dropdown.node().selectedIndex].attributes.end_year.value};
-    d3.json(year_range, function(json) {
-      Ladyparts.getFilms(year_range);
-      // Pass the year/page
-    });
-  }
+
   },
 
   // below is for the barchart
