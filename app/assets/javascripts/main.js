@@ -8,4 +8,7 @@ $(function() {
   $('#hideshow').on('click', function(e){
     $('#barchart1').toggle('show');
   });
+   $('#cast_button').on('click', function(e){
+    $('#cast_svg').toggle('show');
+  });
 });

@@ -5,7 +5,8 @@
   <%= stylesheet_link_tag    "application", media: "all" %>
 
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
@@ -14,5 +15,6 @@
 
 <%= yield %>
 
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
