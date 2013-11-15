@@ -30,7 +30,7 @@ $(function() {
     $('#barchart1').hide();
     $('#about').toggle('hide');
     $('#about-bechdel').hide();
-    $('#cast-svg').toggle('show');
+    $('#cast-chart').toggle('show');
     });
 
     $('#json_sources').on('change', function(e) {
