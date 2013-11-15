@@ -127,11 +127,11 @@ begin
     two_passing_film_directors.each do |director|
     begin
       films = Array.new
-      films << Film.find_by(director: director.key)
+      films << Film.find_by(director: director)
       films.each do |film|
       begin
         film.dpm = 2
-      film.dpm.save
+      film.save!
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -144,11 +144,11 @@ begin
     three_passing_film_directors.each do |director|
     begin
       films = Array.new
-      films << Film.find_by(director: director.key)
+      films << Film.find_by(director: director)
       films.each do |film|
       begin
         film.dpm = 3
-        film.dpm.save
+        film.save!
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -161,11 +161,11 @@ begin
     four_passing_film_directors.each do |director|
       begin
       films = Array.new
-      films << Film.find_by(director: director.key)
+      films << Film.find_by(director: director)
       films.each do |film|
       begin
         film.dpm = 4
-        film.dpm.save
+        film.save!
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -178,11 +178,11 @@ begin
     five_passing_film_directors.each do |director|
       begin
       films = Array.new
-      films << Film.find_by(director: director.key)
+      films << Film.find_by(director: director)
       films.each do |film|
       begin
         film.dpm = 5
-        film.dpm.save
+        film.save!
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -195,11 +195,11 @@ begin
     six_passing_film_directors.each do |director|
       begin
       films = Array.new
-      films << Film.find_by(director: director.key)
+      films << Film.find_by(director: director)
       films.each do |film|
       begin
         film.dpm = 6
-        film.dpm.save
+        film.save!
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -212,11 +212,11 @@ begin
     seven_passing_film_directors.each do |director|
       begin
       films = Array.new
-      films << Film.find_by(director: director.key)
+      films << Film.find_by(director: director)
       films.each do |film|
       begin
         film.dpm = 7
-        film.dpm.save
+        film.save!
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -229,11 +229,11 @@ begin
     eight_passing_film_directors.each do |director|
       begin
       films = Array.new
-      films << Film.find_by(director: director.key)
+      films << Film.find_by(director: director)
       films.each do |film|
       begin
         film.dpm = 8
-        film.dpm.save
+        film.save!
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -246,11 +246,11 @@ begin
     nine_passing_film_directors.each do |director|
       begin
       films = Array.new
-      films << Film.find_by(director: director.key)
+      films << Film.find_by(director: director)
       films.each do |film|
       begin
         film.dpm = 9
-      film.dpm.save
+      film.save!
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -263,11 +263,11 @@ begin
     ten_passing_film_directors.each do |director|
       begin
       films = Array.new
-      films << Film.find_by(director: director.key)
+      films << Film.find_by(director: director)
       films.each do |film|
       begin
         film.dpm = 10
-        film.dpm.save
+        film.save!
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -280,11 +280,11 @@ begin
     eleven_passing_film_directors.each do |director|
       begin
       films = Array.new
-      films << Film.find_by(director: director.key)
+      films << Film.find_by(director: director)
       films.each do |film|
       begin
         film.dpm = 11
-        film.dpm.save
+        film.save!
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -297,11 +297,11 @@ begin
     twelve_passing_film_directors.each do |director|
       begin
       films = Array.new
-      films << Film.find_by(director: director.key)
+      films << Film.find_by(director: director)
       films.each do |film|
       begin
         film.dpm = 12
-        film.dpm.save
+        film.save!
       rescue Exception => e
         puts "got exception #{e.message}"
       end
