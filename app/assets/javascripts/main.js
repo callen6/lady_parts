@@ -24,6 +24,24 @@ $(function() {
     $('#barchart1').hide();
     $('#about').hide();
     $('#cast_svg').toggle('show');
+    });
 
-  });
+    $('#json_sources').on('change', function(e) {
+      $('#year-info').text(this.options[e.target.selectedIndex].text);
+      $('#barchart-info').text("Percent of Films that pass: ");
+    });
+
+    
+
+    $('#explain').tipsy({ 
+        gravity: 'ne', 
+        html: true, 
+        title: function() {
+          return "<h5>Green: passes 3/3 questions</h5><h5>Yellow: passes 2/3</h5><h5>Orange: passes 1/3</h5><h5>Red: passes 0/3 questions</h5>"; 
+        }
+      });
+
+    var easter_egg = new Konami();
+    easter_egg.load('http://www.youtube.com/watch?v=F6ImxY6hnfA')
+
 });
