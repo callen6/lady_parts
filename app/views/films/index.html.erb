@@ -1,31 +1,34 @@
-<div id='about' class='main-box'>
+<div id='about-app' class='main-box'>
 	<%= render "about" %>
 </div>
+
+
 
 <div id='about-bechdel' class='main-box'>
   <%= render "bechdel" %>
 </div>
 
+
+
 <div id="barchart1" class='main-box'>
-
-<span>Choose A Year:</span>
-
-<select id="json_sources" name="json_sources">
-    <%= render "dropdown" %>
-</select>​
-
-<div id='year-info'>2013</div>
-<button id='explain' type='button' class="btn btn-default">Color Key</button>
-<div id='vis1'></div>
-<div id='barchart-info'></div>
+	<span>Choose A Year:</span>
+	<select id="json_sources" name="json_sources">
+	    <%= render "dropdown" %>
+	</select>​
+	<div id='year-info'>2013</div>
+	<button id='explain' type='button' class="btn btn-default">Color Key</button>
+	<div id='vis1'></div>
+	<div id='barchart-info'></div>
 </div>
 
 
-<div id="cast-chart" class='main-box'>
+
+
+<div id="director-vis" class='main-box'>
 	<span>Choose A Director:</span>
 	<select id="director_sources" name="director_sources">
 		<%= render "directordropdown" %>
 	</select>
-	<div id='cast_svg' class='main-box'></div>
+	<div id='dpmvis'></div>
 </div>
 

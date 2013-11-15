@@ -10,7 +10,7 @@ var Cast = { // closure, namespace
 			type: 'GET', 
 			dataType: 'json',
 			success: function(films) {
-				d3.select("#cast_svg").remove(),
+				d3.select("#director").remove(),
 				Cast.plotFilms(films);
 			}
 		});
@@ -24,11 +24,11 @@ var Cast = { // closure, namespace
 				w = 1150, 
 				dataLength = films.length, 
 				barWidth = w/dataLength, 
-				svg = d3.select('#cast_svg')
+				svg = d3.select("#dpmvis")
 					.append('svg')
 					.attr('height', h)
 					.attr('width', w)
-					.attr("id", "barchart")
+					.attr("id", "director")
 					.style('border', '2px solid black'),
 		
 				height = d3.scale
@@ -63,7 +63,7 @@ var Cast = { // closure, namespace
 		html: true, 
 		title: function() {
 			var d = this.__data__;
-			return "<h2>" + d.title + "</h2> " + "<h3>" + d.cast[0][0] + ", " + d.cast[1][0] + ", " + d.cast[2][0] + ", " + d.cast[3][0] + ", " + d.cast[4][0] + "</h3>"; 
+			return "<h2>" + d.title + "</h2> " + "<h3>" + d.director + "</h3>" + "<h4>" + d.cast[0][0] + ", " + d.cast[1][0] + ", " + d.cast[2][0] + ", " + d.cast[3][0] + ", " + d.cast[4][0] + "</h4>"; 
 		}
 	});
 
@@ -76,7 +76,4 @@ var Cast = { // closure, namespace
 			Cast.getActors(director_passing_films);
 		});
 	}
-
-
-
 }

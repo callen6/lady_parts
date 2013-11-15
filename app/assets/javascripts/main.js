@@ -1,6 +1,6 @@
 $(function() {
 // hide both charts onload
-  $('#cast_svg').hide();
+  $("#director-vis").hide();
   $('#barchart1').hide();
   $('#about-bechdel').hide();
 
@@ -9,15 +9,15 @@ $(function() {
   Ladyparts.change(); //trigger json on load
 
   $('#bechdel_about').on('click', function(e){
-    $('#cast_svg').hide();
+    $("#director-vis").hide();
     $('#barchart1').hide();
-    $('#about').toggle('hide');
+    $('#about-app').hide();
     $('#about-bechdel').toggle('show');
   });
 
   $('#hideshow').on('click', function(e){
-    $('#cast_svg').hide();
-    $('#about').toggle('hide');
+    $("#director-vis").hide();
+    $('#about-app').hide();
     $('#about-bechdel').hide();
     $('#barchart1').toggle('show');
   });
@@ -28,9 +28,9 @@ $(function() {
 
   $('#cast_button').on('click', function(e){
     $('#barchart1').hide();
-    $('#about').toggle('hide');
+    $('#about-app').hide();
     $('#about-bechdel').hide();
-    $('#cast-svg').toggle('show');
+    $("#director-vis").toggle('show');
     });
 
     $('#json_sources').on('change', function(e) {

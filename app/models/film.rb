@@ -111,13 +111,13 @@ begin
       films = Array.new
       films << Film.find_by(director: director)
       films.each do |film|
-        begin
+      begin
         # puts "dpm equals 1"
         film.dpm = 1
         film.save!
-        rescue Exception => e
-          puts "got exception #{e.message}"
-        end
+      rescue Exception => e
+        puts "got exception #{e.message}"
+      end
       end
     rescue Exception => e
           puts "got exception #{e.message}"
@@ -133,11 +133,11 @@ begin
         film.dpm = 2
       film.dpm.save
       rescue Exception => e
-          puts "got exception #{e.message}"
+        puts "got exception #{e.message}"
       end
       end
     rescue Exception => e
-          puts "got exception #{e.message}"
+      puts "got exception #{e.message}"
     end
     end
   three_passing_film_directors = counts.select { |v, count| count == 3}.keys
@@ -146,15 +146,15 @@ begin
       films = Array.new
       films << Film.find_by(director: director.key)
       films.each do |film|
-        begin
+      begin
         film.dpm = 3
         film.dpm.save
-        rescue Exception => e
-          puts "got exception #{e.message}"
-        end
+      rescue Exception => e
+        puts "got exception #{e.message}"
       end
-     rescue Exception => e
-          puts "got exception #{e.message}"
+      end
+    rescue Exception => e
+      puts "got exception #{e.message}"
     end
     end
   four_passing_film_directors = counts.select { |v, count| count == 4}.keys
@@ -167,11 +167,11 @@ begin
         film.dpm = 4
         film.dpm.save
       rescue Exception => e
-          puts "got exception #{e.message}"
+        puts "got exception #{e.message}"
       end
       end
     rescue Exception => e
-          puts "got exception #{e.message}"
+      puts "got exception #{e.message}"
     end
     end
   five_passing_film_directors = counts.select { |v, count| count == 5}.keys
@@ -184,11 +184,11 @@ begin
         film.dpm = 5
         film.dpm.save
       rescue Exception => e
-          puts "got exception #{e.message}"
+        puts "got exception #{e.message}"
       end
       end
     rescue Exception => e
-          puts "got exception #{e.message}"
+      puts "got exception #{e.message}"
     end
     end
   six_passing_film_directors = counts.select { |v, count| count == 6}.keys
@@ -201,11 +201,11 @@ begin
         film.dpm = 6
         film.dpm.save
       rescue Exception => e
-          puts "got exception #{e.message}"
+        puts "got exception #{e.message}"
       end
       end
     rescue Exception => e
-          puts "got exception #{e.message}"
+      puts "got exception #{e.message}"
     end
     end
   seven_passing_film_directors = counts.select { |v, count| count == 7}.keys
@@ -218,11 +218,11 @@ begin
         film.dpm = 7
         film.dpm.save
       rescue Exception => e
-          puts "got exception #{e.message}"
+        puts "got exception #{e.message}"
       end
       end
     rescue Exception => e
-          puts "got exception #{e.message}"
+      puts "got exception #{e.message}"
     end
     end
   eight_passing_film_directors = counts.select { |v, count| count == 8}.keys
@@ -235,11 +235,11 @@ begin
         film.dpm = 8
         film.dpm.save
       rescue Exception => e
-          puts "got exception #{e.message}"
+        puts "got exception #{e.message}"
       end
       end
     rescue Exception => e
-          puts "got exception #{e.message}"
+      puts "got exception #{e.message}"
     end
     end
   nine_passing_film_directors = counts.select { |v, count| count == 9}.keys
@@ -252,11 +252,11 @@ begin
         film.dpm = 9
       film.dpm.save
       rescue Exception => e
-          puts "got exception #{e.message}"
+        puts "got exception #{e.message}"
       end
       end
     rescue Exception => e
-          puts "got exception #{e.message}"
+      puts "got exception #{e.message}"
     end
     end
   ten_passing_film_directors = counts.select { |v, count| count == 10}.keys
@@ -269,11 +269,11 @@ begin
         film.dpm = 10
         film.dpm.save
       rescue Exception => e
-          puts "got exception #{e.message}"
+        puts "got exception #{e.message}"
       end
       end
     rescue Exception => e
-          puts "got exception #{e.message}"
+      puts "got exception #{e.message}"
     end
     end
   eleven_passing_film_directors = counts.select { |v, count| count == 11}.keys
@@ -286,11 +286,11 @@ begin
         film.dpm = 11
         film.dpm.save
       rescue Exception => e
-          puts "got exception #{e.message}"
+        puts "got exception #{e.message}"
       end
       end
     rescue Exception => e
-          puts "got exception #{e.message}"
+      puts "got exception #{e.message}"
     end
     end
   twelve_passing_film_directors = counts.select { |v, count| count == 12}.keys
@@ -303,16 +303,16 @@ begin
         film.dpm = 12
         film.dpm.save
       rescue Exception => e
-          puts "got exception #{e.message}"
+        puts "got exception #{e.message}"
       end
       end
     rescue Exception => e
-          puts "got exception #{e.message}"
+      puts "got exception #{e.message}"
     end
     end
-rescue Exception => e
+  rescue Exception => e
     puts "got exception #{e.message}"
-end
+  end
   end
 
 end
