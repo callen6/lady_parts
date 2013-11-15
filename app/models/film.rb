@@ -104,18 +104,23 @@ class Film < ActiveRecord::Base
     end
   counts = Hash.new(0)
   directors_array.each { |v| counts[v] += 1}
-  p counts.select { |v, count| count == 1}.keys
-  p counts.select { |v, count| count == 2}.keys
-  p counts.select { |v, count| count == 3}.keys
-  p counts.select { |v, count| count == 4}.keys
-  p counts.select { |v, count| count == 5}.keys
-  p counts.select { |v, count| count == 6}.keys
-  p counts.select { |v, count| count == 7}.keys
-  p counts.select { |v, count| count == 8}.keys
-  p counts.select { |v, count| count == 9}.keys
-  p counts.select { |v, count| count == 10}.keys
-  p counts.select { |v, count| count > 10}.keys
+  one_passing_film_directors = counts.select { |v, count| count == 1}.keys
+    one_passing_film_directors.each do |director|
+      films = Array.new
+      films << Film.find_by(director: director)
+      films.each do |film|
+        # puts "dpm equals 1"
+        film.dpm = 1
+      end
+    end
+  two_passing_film_directors = counts.select { |v, count| count == 2}.keys
+    two_passing_film_directors.each do |director|
+      films = Array.new
+      films << Film.find_by(director: director.key)
+      films.each do |film|
+        film.dpm = 2
+      end
+    end
   end
-
 
 end

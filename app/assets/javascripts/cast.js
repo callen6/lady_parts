@@ -5,7 +5,7 @@ $(function () {
 var Cast = { // closure, namespace
 	getActors: function(director_films) {
 		$.ajax( {
-			url: '/films/cast',
+			url: '/films/director',
 			data: {director_films: director_films}, 
 			type: 'GET', 
 			dataType: 'json',

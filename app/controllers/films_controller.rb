@@ -2,11 +2,7 @@ class FilmsController < ApplicationController
     respond_to :html, :json
 
   def index
-    respond_with Film.all
-  end
 
-  def cast
-  	respond_with Film.all
   end
 
   def barchart
@@ -20,8 +16,6 @@ class FilmsController < ApplicationController
     director_films = params[:director_films]
     directors = director_films["directors"]
     respond_with Film.where(bechdel_rating: 3).where('director = ?', directors).order('directors asc')
-  # def bubblechart
-  #   respond_with Film.where(critics_score: 1..100)
-  # end
+  end
 
 end
