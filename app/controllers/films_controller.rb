@@ -2,7 +2,6 @@ class FilmsController < ApplicationController
     respond_to :html, :json
 
   def index
-    respond_with Film.all
   end
 
   def cast
@@ -16,9 +15,5 @@ class FilmsController < ApplicationController
 
     respond_with Film.where(critics_score: 1..100).where('year >= ?', start_year).where('year <= ?', end_year).order('year asc')
   end
-
-  # def bubblechart
-  #   respond_with Film.where(critics_score: 1..100)
-  # end
 
 end

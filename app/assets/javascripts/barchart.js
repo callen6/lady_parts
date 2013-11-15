@@ -8,7 +8,7 @@ var Ladyparts = {
         dataType: 'json',
         success: function(films) {
           d3.select("#barchart").remove(),
-          d3.select("#donut").remove(),
+          // d3.select("#donut").remove(),
           Ladyparts.plotFilms(films);
           // Ladyparts.donutChart(films);
       }
@@ -143,22 +143,12 @@ var Ladyparts = {
             })
         })
 
-//     $(document).on('change', '#json_sources', function(e) {
-//     $('#year-info').text(this.options[e.target.selectedIndex].text);
-//     $('#barchart-info').text("Percent of Films that pass: ");
-// });
-    
-
-    $('explain').on('click', function(e){
-
-    });
-
     $('rect').tipsy({ 
         gravity: 'w', 
         html: true, 
         title: function() {
           var d = this.__data__;
-          return '<h2>' + d.title + "</h2> " + "<h3>" + d.critics_score + "</h3>"; 
+          return '<h2>' + d.title + "</h2> " + "<p>Critics Score: </p><h3>" + d.critics_score + "/100</h3>"; 
         }
       });
 
