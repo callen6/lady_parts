@@ -89,7 +89,7 @@ class Film < ActiveRecord::Base
   directors_array = Array.new
     movies.each do |movie|
         begin
-          if movie.critics_score >= 80 && movie.bechdel_rating = "3"
+          if movie.bechdel_rating = "3"
               begin
                 directors_array << movie.director
               rescue Exception => e
@@ -104,23 +104,232 @@ class Film < ActiveRecord::Base
     end
   counts = Hash.new(0)
   directors_array.each { |v| counts[v] += 1}
+begin
   one_passing_film_directors = counts.select { |v, count| count == 1}.keys
     one_passing_film_directors.each do |director|
+    begin
       films = Array.new
       films << Film.find_by(director: director)
       films.each do |film|
+        begin
         # puts "dpm equals 1"
         film.dpm = 1
+        film.save!
+        rescue Exception => e
+          puts "got exception #{e.message}"
+        end
       end
+    rescue Exception => e
+          puts "got exception #{e.message}"
+    end
     end
   two_passing_film_directors = counts.select { |v, count| count == 2}.keys
     two_passing_film_directors.each do |director|
+    begin
       films = Array.new
       films << Film.find_by(director: director.key)
       films.each do |film|
+      begin
         film.dpm = 2
+      film.dpm.save
+      rescue Exception => e
+          puts "got exception #{e.message}"
       end
+      end
+    rescue Exception => e
+          puts "got exception #{e.message}"
     end
+    end
+  three_passing_film_directors = counts.select { |v, count| count == 3}.keys
+    three_passing_film_directors.each do |director|
+    begin
+      films = Array.new
+      films << Film.find_by(director: director.key)
+      films.each do |film|
+        begin
+        film.dpm = 3
+        film.dpm.save
+        rescue Exception => e
+          puts "got exception #{e.message}"
+        end
+      end
+     rescue Exception => e
+          puts "got exception #{e.message}"
+    end
+    end
+  four_passing_film_directors = counts.select { |v, count| count == 4}.keys
+    four_passing_film_directors.each do |director|
+      begin
+      films = Array.new
+      films << Film.find_by(director: director.key)
+      films.each do |film|
+      begin
+        film.dpm = 4
+        film.dpm.save
+      rescue Exception => e
+          puts "got exception #{e.message}"
+      end
+      end
+    rescue Exception => e
+          puts "got exception #{e.message}"
+    end
+    end
+  five_passing_film_directors = counts.select { |v, count| count == 5}.keys
+    five_passing_film_directors.each do |director|
+      begin
+      films = Array.new
+      films << Film.find_by(director: director.key)
+      films.each do |film|
+      begin
+        film.dpm = 5
+        film.dpm.save
+      rescue Exception => e
+          puts "got exception #{e.message}"
+      end
+      end
+    rescue Exception => e
+          puts "got exception #{e.message}"
+    end
+    end
+  six_passing_film_directors = counts.select { |v, count| count == 6}.keys
+    six_passing_film_directors.each do |director|
+      begin
+      films = Array.new
+      films << Film.find_by(director: director.key)
+      films.each do |film|
+      begin
+        film.dpm = 6
+        film.dpm.save
+      rescue Exception => e
+          puts "got exception #{e.message}"
+      end
+      end
+    rescue Exception => e
+          puts "got exception #{e.message}"
+    end
+    end
+  seven_passing_film_directors = counts.select { |v, count| count == 7}.keys
+    seven_passing_film_directors.each do |director|
+      begin
+      films = Array.new
+      films << Film.find_by(director: director.key)
+      films.each do |film|
+      begin
+        film.dpm = 7
+        film.dpm.save
+      rescue Exception => e
+          puts "got exception #{e.message}"
+      end
+      end
+    rescue Exception => e
+          puts "got exception #{e.message}"
+    end
+    end
+  eight_passing_film_directors = counts.select { |v, count| count == 8}.keys
+    eight_passing_film_directors.each do |director|
+      begin
+      films = Array.new
+      films << Film.find_by(director: director.key)
+      films.each do |film|
+      begin
+        film.dpm = 8
+        film.dpm.save
+      rescue Exception => e
+          puts "got exception #{e.message}"
+      end
+      end
+    rescue Exception => e
+          puts "got exception #{e.message}"
+    end
+    end
+  nine_passing_film_directors = counts.select { |v, count| count == 9}.keys
+    nine_passing_film_directors.each do |director|
+      begin
+      films = Array.new
+      films << Film.find_by(director: director.key)
+      films.each do |film|
+      begin
+        film.dpm = 9
+      film.dpm.save
+      rescue Exception => e
+          puts "got exception #{e.message}"
+      end
+      end
+    rescue Exception => e
+          puts "got exception #{e.message}"
+    end
+    end
+  ten_passing_film_directors = counts.select { |v, count| count == 10}.keys
+    ten_passing_film_directors.each do |director|
+      begin
+      films = Array.new
+      films << Film.find_by(director: director.key)
+      films.each do |film|
+      begin
+        film.dpm = 10
+        film.dpm.save
+      rescue Exception => e
+          puts "got exception #{e.message}"
+      end
+      end
+    rescue Exception => e
+          puts "got exception #{e.message}"
+    end
+    end
+  eleven_passing_film_directors = counts.select { |v, count| count == 11}.keys
+    eleven_passing_film_directors.each do |director|
+      begin
+      films = Array.new
+      films << Film.find_by(director: director.key)
+      films.each do |film|
+      begin
+        film.dpm = 11
+        film.dpm.save
+      rescue Exception => e
+          puts "got exception #{e.message}"
+      end
+      end
+    rescue Exception => e
+          puts "got exception #{e.message}"
+    end
+    end
+  eleven_passing_film_directors = counts.select { |v, count| count == 11}.keys
+    eleven_passing_film_directors.each do |director|
+      begin
+      films = Array.new
+      films << Film.find_by(director: director.key)
+      films.each do |film|
+      begin
+        film.dpm = 11
+      film.dpm.save
+      rescue Exception => e
+          puts "got exception #{e.message}"
+      end
+      end
+    rescue Exception => e
+          puts "got exception #{e.message}"
+    end
+    end
+  twelve_passing_film_directors = counts.select { |v, count| count == 12}.keys
+    twelve_passing_film_directors.each do |director|
+      begin
+      films = Array.new
+      films << Film.find_by(director: director.key)
+      films.each do |film|
+      begin
+        film.dpm = 12
+        film.dpm.save
+      rescue Exception => e
+          puts "got exception #{e.message}"
+      end
+      end
+    rescue Exception => e
+          puts "got exception #{e.message}"
+    end
+    end
+rescue Exception => e
+    puts "got exception #{e.message}"
+end
   end
 
 end
