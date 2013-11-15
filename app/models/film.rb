@@ -88,10 +88,11 @@ class Film < ActiveRecord::Base
   movies = Film.all
   directors_array = Array.new
     movies.each do |movie|
-          if movie.bechdel_rating = 3
+      br = movie.bechdel_rating
+          if br == 3
             directors_array << movie.director
           else
-            p movie.title + " doesn't pass the bechdel test with " + movie.bechdel_rating
+            puts "did not pass"
           end
     end
   counts = Hash.new(0)
