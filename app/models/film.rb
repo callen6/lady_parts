@@ -84,7 +84,8 @@ class Film < ActiveRecord::Base
     Film.get('http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=' + ENV['API_KEY'] + '&q=' + enc_title + '&page_limit=1', query: {title: title})
   end
 
-  def get_directors_count
+  def self.get_directors_count
+  movies = Film.all
   directors_array = Array.new
     movies.each do |movie|
         begin
