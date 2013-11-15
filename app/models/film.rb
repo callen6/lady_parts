@@ -84,4 +84,37 @@ class Film < ActiveRecord::Base
     Film.get('http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=' + ENV['API_KEY'] + '&q=' + enc_title + '&page_limit=1', query: {title: title})
   end
 
+  def get_directors_count
+  directors_array = Array.new
+    movies.each do |movie|
+        begin
+          if movie.critics_score >= 80 && movie.bechdel_rating = "3"
+              begin
+                directors_array << movie.director
+              rescue Exception => e
+                puts "Got an Exception of #{e.message}"
+              end
+          else
+            puts 0
+          end
+        rescue Exception => e
+          puts "got exception #{e.message}"
+        end
+    end
+  counts = Hash.new(0)
+  directors_array.each { |v| counts[v] += 1}
+  p counts.select { |v, count| count == 1}.keys
+  p counts.select { |v, count| count == 2}.keys
+  p counts.select { |v, count| count == 3}.keys
+  p counts.select { |v, count| count == 4}.keys
+  p counts.select { |v, count| count == 5}.keys
+  p counts.select { |v, count| count == 6}.keys
+  p counts.select { |v, count| count == 7}.keys
+  p counts.select { |v, count| count == 8}.keys
+  p counts.select { |v, count| count == 9}.keys
+  p counts.select { |v, count| count == 10}.keys
+  p counts.select { |v, count| count > 10}.keys
+  end
+
+
 end

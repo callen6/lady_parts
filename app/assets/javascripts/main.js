@@ -20,6 +20,10 @@ $(function() {
     $('#barchart1').toggle('show');
   });
 
+  var director_dropdown = d3.select("#director_sources");
+  dropdown.on("sortDirector", Cast.sortDirector)
+  Cast.sortDirector();
+
   $('#cast_button').on('click', function(e){
     $('#barchart1').hide();
     $('#about').hide();

@@ -3,13 +3,14 @@ $(function () {
 })
 
 var Cast = { // closure, namespace
-	getActors: function() {
+	getActors: function(director_films) {
 		$.ajax( {
-			url: '/films/cast', 
+			url: '/films/cast',
+			data: {director_films: director_films}, 
 			type: 'GET', 
 			dataType: 'json',
 			success: function(films) {
-				console.log(films);
+				d3.select("#director").remove(),
 				Cast.plotFilms(films);
 			}
 		});
@@ -27,6 +28,7 @@ var Cast = { // closure, namespace
 					.append('svg')
 					.attr('height', h)
 					.attr('width', w)
+					.attr("id", "barchart")
 					.style('border', '2px solid black'),
 		
 				height = d3.scale
@@ -66,6 +68,15 @@ var Cast = { // closure, namespace
 	});
 
 	}
+
+	sortDirector: function() {
+		var dropdown = d3.select("#director_sources"),
+			director_films = { directors: dropdown.node().options[dropdown.node().selectedIndex].attributes.directors.value};
+		d3.json(director_films, function(json){
+			Cast.getActors(director_films);
+		});
+	}
+
 
 
 }
