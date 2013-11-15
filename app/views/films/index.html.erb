@@ -1,8 +1,9 @@
 <div id='about' class='main-box'>
-  <%= render "about" %>
+	<%= render "about" %>
 </div>
 
 <div id="barchart1" class='main-box'>
+
 <span>Choose A Year:</span>
 
 <select id="json_sources" name="json_sources">
@@ -15,4 +16,12 @@
 <div id='barchart-info'></div>
 </div>
 
-<div id='cast_svg' class='main-box'></div>
+
+<div id="cast-chart" class='main-box'>
+	<span>Choose A Director:</span>
+	<select id="director_sources" name="director_sources">
+		<%= render "directordropdown" %>
+	</select>
+	<div id='cast_svg' class='main-box'></div>
+</div>
+
