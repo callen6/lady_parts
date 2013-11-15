@@ -149,6 +149,9 @@ var Ladyparts = {
 // });
     
 
+    $('explain').on('click', function(e){
+
+    });
 
     $('rect').tipsy({ 
         gravity: 'w', 
