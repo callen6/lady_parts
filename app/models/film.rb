@@ -293,23 +293,6 @@ begin
           puts "got exception #{e.message}"
     end
     end
-  eleven_passing_film_directors = counts.select { |v, count| count == 11}.keys
-    eleven_passing_film_directors.each do |director|
-      begin
-      films = Array.new
-      films << Film.find_by(director: director.key)
-      films.each do |film|
-      begin
-        film.dpm = 11
-      film.dpm.save
-      rescue Exception => e
-          puts "got exception #{e.message}"
-      end
-      end
-    rescue Exception => e
-          puts "got exception #{e.message}"
-    end
-    end
   twelve_passing_film_directors = counts.select { |v, count| count == 12}.keys
     twelve_passing_film_directors.each do |director|
       begin

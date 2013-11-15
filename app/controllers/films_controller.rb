@@ -14,9 +14,9 @@ class FilmsController < ApplicationController
   end
 
   def director
-    director_films = params[:director_films]
-    directors = director_films["directors"]
-    respond_with Film.where(critics_score: 80..100).where(bechdel_rating: 3).where('director = ?', directors).order('directors asc')
+    director_passing_films = params[:director_passing_films]
+    dpm = director_passing_films["dpm"]
+    respond_with Film.where(dpm: 1..12).where('dpm = ?', dpm)
   end
 
 end
