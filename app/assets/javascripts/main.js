@@ -24,6 +24,10 @@ $(function() {
     $('#barchart1').hide();
     $('#about').hide();
     $('#cast_svg').toggle('show');
+    });
 
-  });
+    $('#json_sources').on('change', function(e) {
+      $('#year-info').text(this.options[e.target.selectedIndex].text);
+      $('#barchart-info').text("Percent of Films that pass: ");
+    });
 });

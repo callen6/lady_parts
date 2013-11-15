@@ -38,14 +38,15 @@ var Ladyparts = {
 //             .append("g")
 //             .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-// // what to do with this
+// what to do with this
 //     d3.json('/films/barchart', function(json) {
 //       data = json,
 //       console.log(data);
 //       debugger;
 //       data.forEach(function(d) {
+//         d.title = +d.title;
 //         d.critics_score = +d.critics_score;
-//   }),
+//       }),
 
 //     g = svg.selectAll(".arc")
 //       .data(pie(data))
@@ -141,6 +142,13 @@ var Ladyparts = {
               return h - height(d.critics_score);
             })
         })
+
+//     $(document).on('change', '#json_sources', function(e) {
+//     $('#year-info').text(this.options[e.target.selectedIndex].text);
+//     $('#barchart-info').text("Percent of Films that pass: ");
+// });
+    
+
 
     $('rect').tipsy({ 
         gravity: 'w', 
