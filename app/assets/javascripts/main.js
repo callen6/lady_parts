@@ -41,4 +41,7 @@ $(function() {
         }
       });
 
+    var easter_egg = new Konami();
+    easter_egg.load('http://www.youtube.com/watch?v=F6ImxY6hnfA')
+
 });
