@@ -1,5 +1,4 @@
 LadyPartsApp::Application.routes.draw do
-  get '/films/cast' => 'films#cast'
   root 'films#index'
   get '/films/barchart' => 'films#barchart'
   get '/films/director' => 'films#director'
