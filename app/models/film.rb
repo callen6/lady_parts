@@ -88,17 +88,11 @@ class Film < ActiveRecord::Base
   movies = Film.all
   directors_array = Array.new
     movies.each do |movie|
-        begin
-          if movie.bechdel_rating == "3"
-              begin
-                directors_array << movie.director
-              rescue Exception => e
-                puts "Got an Exception of #{e.message}"
-              end
+          if movie.bechdel_rating = 3
+            directors_array << movie.director
+          else
+            p movie.title + " doesn't pass the bechdel test with " + movie.bechdel_rating
           end
-        rescue Exception => e
-          puts "got exception #{e.message}"
-        end
     end
   counts = Hash.new(0)
   directors_array.each { |v| counts[v] += 1}
