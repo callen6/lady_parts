@@ -36,9 +36,9 @@ var Cast = { // closure, namespace
 								.domain([0, 100])
 								.range([0, h]),
 				color = d3.scale
-                .linear()
-                .domain([0,100])
-                .range([0, 255]);
+                .ordinal()
+                .domain(["0", "1", "2", "3"])
+                .range(["#E80C2C", "#FF7F00", "#F5F732", "#42A87A"]);
 		svg.selectAll('rect')
 			.data(films)
 			.enter()
@@ -54,7 +54,7 @@ var Cast = { // closure, namespace
 				return h - height(data.critics_score);
 			})
 			.attr("fill", function(d, index){
-				return color(d.critics_score);
+				return color(d.bechdel_rating);
 			})
 
 
@@ -63,7 +63,7 @@ var Cast = { // closure, namespace
 		html: true, 
 		title: function() {
 			var d = this.__data__;
-			return "<h2>" + d.title + "</h2> " + "<h3>" + d.director + "</h3>" + "<h4>" + d.cast[0][0] + ", " + d.cast[1][0] + ", " + d.cast[2][0] + ", " + d.cast[3][0] + ", " + d.cast[4][0] + "</h4>"; 
+			return "<h2>" + d.title + "</h2> " + "<h3>" + d.director + "</h3>" + "<h4>" + d.cast[0][0] + ", " + d.cast[1][0] + ", " + d.cast[2][0] + ", " + d.cast[3][0] + ", " + d.cast[4][0] + "</h4>" + "<p>" + d.bechdel_rating + "</p>"; 
 		}
 	});
 

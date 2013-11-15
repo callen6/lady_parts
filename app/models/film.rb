@@ -89,14 +89,12 @@ class Film < ActiveRecord::Base
   directors_array = Array.new
     movies.each do |movie|
         begin
-          if movie.bechdel_rating = "3"
+          if movie.bechdel_rating == "3"
               begin
                 directors_array << movie.director
               rescue Exception => e
                 puts "Got an Exception of #{e.message}"
               end
-          else
-            puts 0
           end
         rescue Exception => e
           puts "got exception #{e.message}"
@@ -114,7 +112,7 @@ begin
       begin
         # puts "dpm equals 1"
         film.dpm = 1
-        film.save!
+        film.save
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -131,7 +129,7 @@ begin
       films.each do |film|
       begin
         film.dpm = 2
-      film.save!
+      film.save
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -148,7 +146,7 @@ begin
       films.each do |film|
       begin
         film.dpm = 3
-        film.save!
+        film.save
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -165,7 +163,7 @@ begin
       films.each do |film|
       begin
         film.dpm = 4
-        film.save!
+        film.save
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -182,7 +180,7 @@ begin
       films.each do |film|
       begin
         film.dpm = 5
-        film.save!
+        film.save
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -199,7 +197,7 @@ begin
       films.each do |film|
       begin
         film.dpm = 6
-        film.save!
+        film.save
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -216,7 +214,7 @@ begin
       films.each do |film|
       begin
         film.dpm = 7
-        film.save!
+        film.save
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -233,7 +231,7 @@ begin
       films.each do |film|
       begin
         film.dpm = 8
-        film.save!
+        film.save
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -250,7 +248,7 @@ begin
       films.each do |film|
       begin
         film.dpm = 9
-      film.save!
+      film.save
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -267,7 +265,7 @@ begin
       films.each do |film|
       begin
         film.dpm = 10
-        film.save!
+        film.save
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -284,7 +282,7 @@ begin
       films.each do |film|
       begin
         film.dpm = 11
-        film.save!
+        film.save
       rescue Exception => e
         puts "got exception #{e.message}"
       end
@@ -301,7 +299,7 @@ begin
       films.each do |film|
       begin
         film.dpm = 12
-        film.save!
+        film.save
       rescue Exception => e
         puts "got exception #{e.message}"
       end
