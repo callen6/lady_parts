@@ -11,14 +11,14 @@ $(function() {
   $('#bechdel_about').on('click', function(e){
     $("#director-vis").hide();
     $('#barchart1').hide();
-    $('#about-app').toggle('hide');
+    $('#about-app').hide();
     $('#about-bechdel').toggle('show');
   });
 
   $('#hideshow').on('click', function(e){
     $("#director-vis").hide();
-    $('#about-app').toggle('hide');
     $('#about-bechdel').hide();
+    $('#about-app').hide();
     $('#barchart1').toggle('show');
   });
 
@@ -28,9 +28,9 @@ $(function() {
 
   $('#cast_button').on('click', function(e){
     $('#barchart1').hide();
-    $('#about-app').toggle('hide');
     $('#about-bechdel').hide();
-    $('#cast-chart').toggle('show');
+    $('#about-app').hide();
+    $('#director-vis').toggle('show');
     });
 
     $('#json_sources').on('change', function(e) {
