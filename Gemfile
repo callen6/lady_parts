@@ -51,6 +51,8 @@ gem "twitter-bootstrap-rails"
 gem "less-rails"
 gem 'newrelic_rpm'
 
+gem 'rspec-rails'
+
 group :test do
   gem 'capybara'
   gem 'launchy'
