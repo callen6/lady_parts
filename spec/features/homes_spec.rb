@@ -1,11 +1,22 @@
 require 'spec_helper'
 
-describe "Homes" do
-  describe "GET /homes" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get homes_path
-      response.status.should be(200)
-    end
+feature 'Home/Root page' do
+  scenario "without users" do
+    visit root_url
+    current_path.should == root_path
+    find_link 'Bechdel Test API'
+    find_link 'Rotten Tomatoes API'
+    find_link 'our code on GitHub'
+    find_link '@plainpioneer'
+    find_link '@enspencer'
+    find_link 'Ladyparts'
+    # within_frame 'twitter-widget-0' do
+    # 	click_button 'Tweet Button'
+    # end
+    click_button 'The Bechdel Test'
+    click_button 'Explore films by critics score'
+    click_button 'Explore films by director'
+    save_and_open_page
   end
+
 end
