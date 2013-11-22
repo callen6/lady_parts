@@ -11,6 +11,7 @@ feature 'Home/Root page' do
     find_link '@enspencer'
     find_link 'Ladyparts'
     find_link 'Dykes to Watch Out For'
+    # still needs iframe testing for tweet button
     # within_frame 'twitter-widget-0' do
     # 	click_button 'Tweet Button'
     # end
@@ -18,7 +19,6 @@ feature 'Home/Root page' do
     click_button 'Explore films by critics score'
     click_button 'Explore films by director'
     page.select 'directors with seven films passing', from: 'director_sources'
-    save_and_open_page
   end
 
 end
