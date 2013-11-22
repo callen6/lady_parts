@@ -51,6 +51,13 @@ gem "twitter-bootstrap-rails"
 gem "less-rails"
 gem 'newrelic_rpm'
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'database_cleaner'
+end
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
