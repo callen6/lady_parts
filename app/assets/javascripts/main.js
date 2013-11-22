@@ -17,8 +17,8 @@ $(function() {
 
   $('#hideshow').on('click', function(e){
     $("#director-vis").hide();
-    $('#about-app').hide();
     $('#about-bechdel').hide();
+    $('#about-app').hide();
     $('#barchart1').toggle('show');
   });
 
@@ -28,9 +28,9 @@ $(function() {
 
   $('#cast_button').on('click', function(e){
     $('#barchart1').hide();
-    $('#about-app').hide();
     $('#about-bechdel').hide();
-    $("#director-vis").toggle('show');
+    $('#about-app').hide();
+    $('#director-vis').toggle('show');
     });
 
     $('#json_sources').on('change', function(e) {
