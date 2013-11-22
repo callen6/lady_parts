@@ -5,6 +5,10 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 729022f9f363d0868ca05916c2e0856c3dc0b2bf
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
