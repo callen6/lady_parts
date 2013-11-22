@@ -10,12 +10,14 @@ feature 'Home/Root page' do
     find_link '@plainpioneer'
     find_link '@enspencer'
     find_link 'Ladyparts'
+    find_link 'Dykes to Watch Out For'
     # within_frame 'twitter-widget-0' do
     # 	click_button 'Tweet Button'
     # end
     click_button 'The Bechdel Test'
     click_button 'Explore films by critics score'
     click_button 'Explore films by director'
+    page.select 'directors with seven films passing', from: 'director_sources'
     save_and_open_page
   end
 
