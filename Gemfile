@@ -9,6 +9,10 @@ gem 'pg'
 # Use pry to debug
 gem 'pry-rails'
 
+group :development, :test do
+	gem 'rspec-rails'
+end
+
 # Use httparty to make calls to an API
 gem 'httparty'
 
